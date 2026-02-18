@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Librería El Fuerte – Próximamente</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-weight: 300;
+      margin-bottom: 40px;
+      color: #ddd;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      min-width: 100px;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    .time-box small {
+      font-size: 0.9rem;
+      color: #ccc;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .time-box {
+        min-width: 80px;
+        padding: 15px;
+      }
+      .time-box span {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Librería El Fuerte</h1>
+    <h2>Abrimos muy pronto</h2>
+
+    <div class="countdown">
+      <div class="time-box">
+        <span id="days">0</span>
+        <small>DÍAS</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">0</span>
+        <small>HORAS</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">0</span>
+        <small>MINUTOS</small>
+      </div>
+      <div class="time-box">
+        <span id="seconds">0</span>
+        <small>SEGUNDOS</small>
+      </div>
+    </div>
+
+    <div class="footer">
+      Apertura: 2 de marzo
+    </div>
+  </div>
+
+  <script>
+    // Fecha de apertura: 2 de marzo (00:00 hora local)
+    const launchDate = new Date("March 2, 2026 00:00:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance <= 0) {
+        document.querySelector(".container").innerHTML = `
+          <h1>Librería El Fuerte</h1>
+          <h2>¡Ya abrimos!</h2>
+        `;
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
