@@ -14,7 +14,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #E65C2A, #E65C2A);
+      background: linear-gradient(135deg, #143654, #143654);
       color: #fff;
       display: flex;
       align-items: center;
@@ -49,7 +49,7 @@
     }
 
     .time-box {
-    background: #143654;
+    background: #E65C2A;
     border-radius: 12px;
     padding: 20px;
     min-width: 100px;
@@ -83,6 +83,16 @@
   height: auto;
 }
 
+.logo-box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  margin: 0 auto 20px auto;
+}
+
 
     @media (max-width: 480px) {
       h1 {
@@ -96,7 +106,10 @@
         font-size: 1.8rem;
       }
     .logo {
-    max-width: 140px;
+        max-width: 140px;
+    }
+    .logo-box {
+        padding: 12px;
     }
     }
   </style>
@@ -104,7 +117,9 @@
 <body>
 
   <div class="container">
-    <img src="Logo.png" alt="Librería El Fuerte" class="logo" />
+    <div class="logo-box">
+        <img src="Logo.png" alt="Librería El Fuerte" class="logo" />
+    </div>  
     <h1>Librería El Fuerte</h1>
     <h2>Abrimos muy pronto</h2>
 
